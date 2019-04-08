@@ -1,13 +1,24 @@
-.hero {
-  height: 100vh;
-  width: 100%;
-  padding: 2rem;
+.header {
+  padding: 1rem 2.3rem;
+  // padding-left: 2.2rem;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
 
-  img {
-    max-height: 100%;
-    max-width: 100%;
-    border-radius: 1rem;
-    margin: auto;
-    box-shadow: 2px 2px 15px rgba(0, 0, 0, .15);
+.title {
+  font-size: 1.4rem;
+  font-weight: 500;
+  letter-spacing: 1px;
+}
+
+nav ul {
+  display: flex;
+  align-items: center;
+
+  li {
+    &:not(:last-child) {
+      margin-right: 1rem;
+    }
   }
 }

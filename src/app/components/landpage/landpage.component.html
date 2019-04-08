@@ -1,0 +1,28 @@
+<div class="hero main-container">
+  <img
+    class="fade image-rounded"
+    [ngClass]="{'is-loaded': isLoaded}"
+    src="assets/images/luke-barbican-small.jpg"
+    alt=""
+    (load)="isLoaded=true"
+  >
+</div>
+
+<ul class="list main-container" *ngIf="album">
+  <li *ngFor="let image of album.images">
+    <img [src]="image.image.image.data.full_url" alt="">
+    <div class="infos">
+      <h3 class="title">{{image.image.title}}</h3>
+      <p class="description">{{image.image.description}}</p>
+    </div>
+  </li>
+</ul>
+
+<!-- <section class="album main-container" *ngFor="let album of albums">
+  <h2 class="title">{{album.title}}</h2>
+  <ul>
+    <li *ngFor="let image of album.images">
+      <img [src]="image.image.image.data.full_url" alt="">
+    </li>
+  </ul>
+</section> -->
