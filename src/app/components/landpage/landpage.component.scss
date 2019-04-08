@@ -17,6 +17,10 @@
   column-gap: 2rem;
   margin-bottom: 3rem;
 
+  @include respond-to('small') {
+    column-count: 1;
+  }
+
   li {
     padding-bottom: 2rem;
     break-inside: avoid;
