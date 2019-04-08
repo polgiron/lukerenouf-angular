@@ -8,6 +8,7 @@ import { Api } from 'src/app/services/api.service';
 })
 export class LandpageComponent implements OnInit {
   // albums: any;
+  isLoaded: boolean = false;
   album: any;
 
   constructor(
