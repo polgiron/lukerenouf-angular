@@ -12,4 +12,8 @@ export class ImageModalComponent implements OnInit {
 
   ngOnInit() {
   }
+
+  close() {
+
+  }
 }
