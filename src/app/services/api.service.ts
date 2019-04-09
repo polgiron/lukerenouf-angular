@@ -19,8 +19,7 @@ export class Api {
     // });
 
     this.client = new DirectusSDK({
-      // url: 'http://api.paulgiron.com',
-      url: 'http://139.59.186.163',
+      url: 'https://api.paulgiron.com',
       project: 'lukerenouf'
     });
 
