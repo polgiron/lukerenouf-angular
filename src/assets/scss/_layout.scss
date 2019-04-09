@@ -9,9 +9,9 @@
   margin: auto;
   // margin-bottom: 3 * $spacing;
 
-  // @include respond-to('small') {
-  //   max-width: 100%;
-  // }
+  @include respond-to('small') {
+    padding: 0 1rem;
+  }
 }
 
 // .main-loader-wrapper {
@@ -36,9 +36,12 @@
 
 img.fade {
   opacity: 0;
-  transition: opacity 1s ease-out;
+  // transform: translate3d(-3rem, 3rem, 0);
+  // transition: all 1.2s $ease-out-quint 1s;
+  transition: all 2s $ease-out-quint .5s;
 
   &.is-loaded {
     opacity: 1;
+    // transform: translate3d(0, 0, 0);
   }
 }

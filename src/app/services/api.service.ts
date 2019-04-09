@@ -6,6 +6,8 @@ import DirectusSDK from "@directus/sdk-js";
 })
 export class Api {
   client: any;
+  domain: string = 'https://api.paulgiron.com';
+  project: string = 'lukerenouf';
 
   constructor() {
     // this.client = new DirectusSDK();
@@ -19,8 +21,8 @@ export class Api {
     // });
 
     this.client = new DirectusSDK({
-      url: 'https://api.paulgiron.com',
-      project: 'lukerenouf'
+      url: this.domain,
+      project: this.project
     });
 
     // client.getItems('image?fields=*.*.*')
@@ -32,6 +34,15 @@ export class Api {
     //     console.log(data);
     //     // console.log(data.data[0]);
     //   });
+  }
+
+  getLandpageCover() {
+    return this.client.getItems('landpage_cover?fields=*.*.*.*')
+      .catch(error => console.error(error))
+      .then(data => {
+        console.log(data.data[0]);
+        return data.data[0];
+      });
   }
 
   getLandpageAlbum() {
@@ -52,5 +63,17 @@ export class Api {
         // console.log(data.data[0]);
         return data.data;
       });
+  }
+
+  getThumbnail(filename: string, size?: string) {
+    let dimensions = '800/600';
+
+    switch (size) {
+      case 'big':
+        dimensions = '1024/768';
+        break;
+    }
+
+    return `${this.domain}/thumbnail/${this.project}/${dimensions}/contain/best/${filename}`;
   }
 }
