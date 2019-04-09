@@ -8,6 +8,7 @@ import { Component, OnInit, Input } from '@angular/core';
 export class ImageThumbComponent implements OnInit {
   @Input() image;
   isLoaded: boolean = false;
+  modalIsOpen: boolean = false;
 
   constructor() { }
 

@@ -8,6 +8,7 @@ import { LoaderComponent } from './components/loader/loader.component';
 import { TagsComponent } from './components/tags/tags.component';
 import { LandpageComponent } from './components/landpage/landpage.component';
 import { ImageThumbComponent } from './components/images/image-thumb/image-thumb.component';
+import { ImageModalComponent } from './components/images/image-modal/image-modal.component';
 
 @NgModule({
   declarations: [
@@ -16,7 +17,8 @@ import { ImageThumbComponent } from './components/images/image-thumb/image-thumb
     LoaderComponent,
     TagsComponent,
     LandpageComponent,
-    ImageThumbComponent
+    ImageThumbComponent,
+    ImageModalComponent
   ],
   imports: [
     HttpModule,
