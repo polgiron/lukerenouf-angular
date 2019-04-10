@@ -10,6 +10,8 @@ import { takeWhile } from 'rxjs/operators';
 export class HomeComponent implements OnInit {
   private _alive: boolean = true;
   modalImage: any;
+  instagram: string;
+  email: string;
 
   constructor(
     private api: Api
@@ -21,6 +23,11 @@ export class HomeComponent implements OnInit {
       .subscribe(modalImage => {
         this.modalImage = modalImage;
       });
+
+    this.api.getContact().then(data => {
+      this.instagram = data.instagram;
+      this.email = data.email;
+    });
   }
 
   ngOnDestroy() {

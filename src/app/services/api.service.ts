@@ -81,6 +81,16 @@ export class Api {
       });
   }
 
+  getContact() {
+    return this.client.getItems('contact')
+      .catch(error => console.error(error))
+      .then(data => {
+        // console.log(data);
+        // console.log(data.data[0]);
+        return data.data[0];
+      });
+  }
+
   getThumbnail(filename: string, size?: string) {
     let dimensions = '800/800';
 

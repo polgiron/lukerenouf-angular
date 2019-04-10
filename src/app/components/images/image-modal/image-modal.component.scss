@@ -26,33 +26,12 @@
   position: relative;
   z-index: 1;
   display: flex;
-  background: $color-white;
-  // width: 100%;
-}
-
-.left {
-  width: 100%;
-  // flex: 1;
-  // padding-bottom: 100%;
-  // position: relative;
-
-  // img {
-  //   width: 100%;
-  //   margin: auto;
-  //   // display: block;
-  //   // height: 100%;
-  //   // object-fit: contain;
-  //   // object-fit: cover;
-  //   // position: absolute;
-  //   // height: 100%;
-  // }
+  // background: $color-white;
 }
 
 .right {
   width: 18rem;
-  min-width: 18rem;
   padding: 2rem;
-  flex-grow: 0;
   background: $color-white;
 }
 
@@ -60,17 +39,12 @@
   font-size: 2rem;
   font-weight: 500;
   margin-bottom: $spacing;
+  color: $color-mediumgray;
 }
 
 .description {
   color: $color-mediumgray;
-}
-
-.tags-wrapper,
-.settings-wrapper {
-  margin-top: 2 * $spacing;
-}
-
-.tags-wrapper {
-  max-width: 16rem;
+  font-weight: 300;
+  line-height: 1.5;
+  font-size: .9rem;
 }

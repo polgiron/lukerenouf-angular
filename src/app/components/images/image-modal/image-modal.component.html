@@ -1,16 +1,13 @@
 <div class="modal">
   <div class="overlay" (click)="close()"></div>
-  <div class="dialog" #dialog>
+  <div class="dialog">
     <div class="left" #left>
       <app-image [src]="imageSrc" [width]="image.image.width" [height]="image.image.height"></app-image>
     </div>
     <div class="right" #right>
       <div class="inner">
-        <h2 class="title">Title</h2>
-        <p class="description">
-          Lorem ipsum dolor sit amet consectetur, adipisicing elit. Non officia saepe voluptate laboriosam ea dolor unde ad inventore. Temporibus ea aliquam optio ab labore rerum hic cupiditate dolor tenetur? Explicabo.
-        </p>
-        <!-- <h2 class="title">{{photo.title._content || 'Untitled'}}</h2> -->
+        <h2 class="title">{{image.title || 'Untitled'}}</h2>
+        <p class="description">{{image.description || 'No description'}}</p>
         <!-- <p class="description">
           {{photo.description._content || 'No description'}}
         </p> -->

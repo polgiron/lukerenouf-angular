@@ -8,8 +8,6 @@ import { takeWhile } from 'rxjs/operators';
   styleUrls: ['./image-modal.component.scss']
 })
 export class ImageModalComponent implements OnInit {
-  // @ViewChild('dialog') dialogElement: ElementRef;
-  // @ViewChild('image') imageElement: ElementRef;
   @ViewChild('left') leftElement: ElementRef;
   @ViewChild('right') rightElement: ElementRef;
   @Input() image: any;
@@ -46,8 +44,6 @@ export class ImageModalComponent implements OnInit {
   }
 
   setDialogWidth() {
-    console.log('Resize!');
-
     const oriWidth = this.image.image.width;
     const oriHeight = this.image.image.height;
     const rightWidth = this.rightElement.nativeElement.clientWidth;
@@ -58,7 +54,6 @@ export class ImageModalComponent implements OnInit {
     let newHeight = maxHeight;
 
     if (newWidth > maxWidth) {
-      // console.log('TOO LARGE !');
       newWidth = maxWidth;
       newHeight = oriHeight * newWidth / oriWidth;
     }
