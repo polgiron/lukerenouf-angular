@@ -1,47 +1,30 @@
-// .animated-router-outlet ~ * {
-//   position: absolute;
-//   width: 100%;
-// }
-
 .main-container {
   max-width: $container-width;
   padding: 0 2rem;
   margin: auto;
-  // margin-bottom: 3 * $spacing;
 
   @include respond-to('small') {
     padding: 0 1rem;
   }
 }
 
-// .main-loader-wrapper {
-//   width: 100%;
-//   margin-top: 12rem;
-// }
-
-// .thumbs-list {
-//   display: grid;
-//   grid-gap: 1.5 * $spacing;
-//   grid-template-columns: repeat(3, minmax(240px, 1fr));
-// }
-
-// .image-rounded {
-//   // width: 100%;
-//   border-radius: .5rem;
-// }
-
-// body.is-static {
-//   overflow: hidden;
-// }
-
 img.fade {
   opacity: 0;
-  // transform: translate3d(-3rem, 3rem, 0);
-  // transition: all 1.2s $ease-out-quint 1s;
-  transition: all 2s $ease-out-quint .5s;
+  transition: opacity 2s $ease-out-quint .5s, box-shadow .3s $ease-out-quint;
 
   &.is-loaded {
     opacity: 1;
-    // transform: translate3d(0, 0, 0);
+  }
+}
+
+.image-thumb:not(.is-cover) {
+  transition: all .3s $ease-out-quint;
+
+  &:hover {
+    transform: translate3d(.3rem, -.3rem, 0);
+
+    img {
+      box-shadow: -2px 2px 15px rgba(0, 0, 0, .3) !important;
+    }
   }
 }

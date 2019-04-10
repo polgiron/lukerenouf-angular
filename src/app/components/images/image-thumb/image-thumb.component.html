@@ -1,4 +1,4 @@
-<button class="image-thumb" (click)="onClick()">
+<button class="image-thumb" [ngClass]="{'is-cover': cover}" (click)="onClick()">
   <!-- <div class="image-wrapper" #wrapper> -->
     <app-image [src]="imageSrc" [width]="image.image.width" [height]="image.image.height"></app-image>
   <!-- </div> -->
