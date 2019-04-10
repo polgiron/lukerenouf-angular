@@ -1,4 +1,5 @@
 import { Component, OnInit, Input } from '@angular/core';
+import { Api } from 'src/app/services/api.service';
 
 @Component({
   selector: 'app-image-thumb',
@@ -7,11 +8,19 @@ import { Component, OnInit, Input } from '@angular/core';
 })
 export class ImageThumbComponent implements OnInit {
   @Input() image;
-  isLoaded: boolean = false;
-  modalIsOpen: boolean = false;
+  @Input() cover: boolean = false;
+  imageSrc: string;
 
-  constructor() { }
+  constructor(
+    private api: Api
+  ) { }
 
   ngOnInit() {
+    // console.log(this.image.image);
+    this.imageSrc = this.api.getThumbnail(this.image.image.filename, this.cover ? 'big' : null);
+  }
+
+  onClick() {
+    this.api.openImageModal(this.image);
   }
 }

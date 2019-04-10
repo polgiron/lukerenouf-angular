@@ -1,10 +1,12 @@
 import { Injectable } from '@angular/core';
 import DirectusSDK from "@directus/sdk-js";
+import { Observable, Subject } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
 })
 export class Api {
+  private _modalImage: Subject<any> = new Subject<any>();
   client: any;
   domain: string = 'https://api.paulgiron.com';
   project: string = 'lukerenouf';
@@ -36,11 +38,25 @@ export class Api {
     //   });
   }
 
+  public modalImageChannel(): Observable<number> {
+    return this._modalImage.asObservable();
+  }
+
+  openImageModal(image: any) {
+    this._modalImage.next(image);
+    document.body.classList.add('is-static');
+  }
+
+  closeImageModal() {
+    this._modalImage.next(null);
+    document.body.classList.remove('is-static');
+  }
+
   getLandpageCover() {
     return this.client.getItems('landpage_cover?fields=*.*.*.*')
       .catch(error => console.error(error))
       .then(data => {
-        console.log(data.data[0]);
+        // console.log(data.data[0]);
         return data.data[0];
       });
   }
@@ -50,7 +66,7 @@ export class Api {
       .catch(error => console.error(error))
       .then(data => {
         // console.log(data);
-        console.log(data.data[0]);
+        // console.log(data.data[0]);
         return data.data[0];
       });
   }
@@ -59,18 +75,18 @@ export class Api {
     return this.client.getItems('album?fields=*.*.*.*')
       .catch(error => console.error(error))
       .then(data => {
-        console.log(data);
+        // console.log(data);
         // console.log(data.data[0]);
         return data.data;
       });
   }
 
   getThumbnail(filename: string, size?: string) {
-    let dimensions = '800/600';
+    let dimensions = '800/800';
 
     switch (size) {
       case 'big':
-        dimensions = '1024/768';
+        dimensions = '1024/1024';
         break;
     }
 

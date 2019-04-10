@@ -1,13 +1,11 @@
-<img
-  alt=""
-  class="fade"
-  [src]="image.src"
-  (load)="isLoaded=true"
-  [ngClass]="{'is-loaded': isLoaded}"
->
-<!-- <div class="infos">
-  <h3 class="title">{{image.image.title}}</h3>
-  <p class="description">{{image.image.description}}</p>
-</div> -->
+<button class="image-thumb" (click)="onClick()">
+  <!-- <div class="image-wrapper" #wrapper> -->
+    <app-image [src]="imageSrc" [width]="image.image.width" [height]="image.image.height"></app-image>
+  <!-- </div> -->
+  <!-- <div class="infos">
+    <h3 class="title">{{image.image.title}}</h3>
+    <p class="description">{{image.image.description}}</p>
+  </div> -->
+</button>
 
 <!-- <app-image-modal *ngIf="modalIsOpen" [image]="image"></app-image-modal> -->

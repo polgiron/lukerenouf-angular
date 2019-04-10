@@ -1,10 +1,10 @@
 <div class="hero main-container">
-  <app-image-thumb *ngIf="cover" [image]="cover"></app-image-thumb>
+  <app-image-thumb *ngIf="cover" [image]="cover" [cover]="true"></app-image-thumb>
 </div>
 
 <ul class="list main-container" *ngIf="album">
   <li *ngFor="let image of album.images">
-    <app-image-thumb [image]="image"></app-image-thumb>
+    <app-image-thumb [image]="image.image"></app-image-thumb>
   </li>
 </ul>
 

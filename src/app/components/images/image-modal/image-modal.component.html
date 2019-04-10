@@ -1,10 +1,10 @@
 <div class="modal">
   <div class="overlay" (click)="close()"></div>
-  <div class="dialog">
-    <div class="left">
-      <img src="/assets/images/luke-barbican-small.jpg" alt="">
+  <div class="dialog" #dialog>
+    <div class="left" #left>
+      <app-image [src]="imageSrc" [width]="image.image.width" [height]="image.image.height"></app-image>
     </div>
-    <div class="right">
+    <div class="right" #right>
       <div class="inner">
         <h2 class="title">Title</h2>
         <p class="description">

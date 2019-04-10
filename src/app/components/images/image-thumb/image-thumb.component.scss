@@ -1,11 +1,7 @@
 @import '~src/assets/scss/variables';
 
-img {
+.image-thumb {
   width: 100%;
-  // border-radius: .5rem;
-  // box-shadow: 0 0 10px rgba(131, 90, 90, 0.3);
-  // border: 8px double $color-darkgray;
-  box-shadow: 2px 2px 15px rgba(0, 0, 0, .15);
 }
 
 .infos {
