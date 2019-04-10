@@ -1,6 +1,7 @@
 <div class="modal">
   <div class="overlay" (click)="close()"></div>
   <div class="dialog">
+    <button class="close-button" (click)="close()"><i class="material-icons">close</i></button>
     <div class="left" #left>
       <app-image [src]="imageSrc" [width]="image.image.width" [height]="image.image.height"></app-image>
     </div>
@@ -8,12 +9,9 @@
       <div class="inner">
         <h2 class="title">{{image.title || 'Untitled'}}</h2>
         <p class="description">{{image.description || 'No description'}}</p>
-        <!-- <p class="description">
-          {{photo.description._content || 'No description'}}
-        </p> -->
-        <!-- <div class="tags-wrapper"> -->
-          <!-- <app-tags [tags]="tags"></app-tags> -->
-        <!-- </div> -->
+        <div class="tags-wrapper">
+          <app-tags [tags]="tags"></app-tags>
+        </div>
       </div>
     </div>
   </div>

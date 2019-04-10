@@ -14,14 +14,18 @@ export class ImageModalComponent implements OnInit {
   private _resizeListener: EventListener;
   // private _alive: boolean = true;
   // image: any;
-  padding: number = 32;
   imageSrc: string;
+  padding: number = 32;
+  mobileBreakpoint: number = 767;
+  tags: string[] = [];
 
   constructor(
     private api: Api
   ) { }
 
   ngOnInit() {
+    // console.log(this.image.tags);
+
     // this.api.modalImageChannel()
     //   .pipe(takeWhile(() => this._alive))
     //   .subscribe(image => {
@@ -31,6 +35,10 @@ export class ImageModalComponent implements OnInit {
     //       this.setDialogWidth();
     //     }
     //   });
+
+    this.image.tags.forEach(tag => {
+      this.tags.push(tag.tag.tag);
+    });
 
     this.imageSrc = this.image.image.data.full_url;
     this.setDialogWidth();
@@ -44,6 +52,10 @@ export class ImageModalComponent implements OnInit {
   }
 
   setDialogWidth() {
+    if (window.innerWidth < this.mobileBreakpoint) {
+      return;
+    }
+
     const oriWidth = this.image.image.width;
     const oriHeight = this.image.image.height;
     const rightWidth = this.rightElement.nativeElement.clientWidth;

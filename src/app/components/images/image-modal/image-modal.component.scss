@@ -8,6 +8,10 @@
   height: 100vh;
   display: flex;
   padding: 2rem;
+
+  @include respond-to('small') {
+    padding: 1rem;
+  }
 }
 
 .overlay {
@@ -27,12 +31,22 @@
   z-index: 1;
   display: flex;
   // background: $color-white;
+
+  @include respond-to('small') {
+    display: block;
+    width: 100%;
+  }
 }
 
 .right {
   width: 18rem;
   padding: 2rem;
   background: $color-white;
+
+  @include respond-to('small') {
+    padding: 1rem;
+    width: 100%;
+  }
 }
 
 .title {
@@ -40,6 +54,11 @@
   font-weight: 500;
   margin-bottom: $spacing;
   color: $color-mediumgray;
+
+  @include respond-to('small') {
+    font-size: 1.2rem;
+    margin-bottom: .5rem;
+  }
 }
 
 .description {
@@ -47,4 +66,26 @@
   font-weight: 300;
   line-height: 1.5;
   font-size: .9rem;
+  font-style: italic;
+}
+
+.close-button {
+  position: absolute;
+  top: .5rem;
+  right: .5rem;
+  width: 1.7rem;
+  height: 1.7rem;
+  z-index: 2;
+
+  i {
+    font-size: 2.4em;
+    margin: auto;
+    position: relative;
+    top: 2px;
+    color: $color-lightgray;
+  }
+}
+
+.tags-wrapper {
+  margin-top: 1rem;
 }

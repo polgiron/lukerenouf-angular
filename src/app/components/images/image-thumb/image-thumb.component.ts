@@ -16,7 +16,7 @@ export class ImageThumbComponent implements OnInit {
   ) { }
 
   ngOnInit() {
-    // console.log(this.image.image);
+    // console.log(this.image);
     this.imageSrc = this.api.getThumbnail(this.image.image.filename, this.cover ? 'big' : null);
   }
 

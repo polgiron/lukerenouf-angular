@@ -1,16 +1,22 @@
 @import '~src/assets/scss/variables';
 
-.tags {
-  display: flex;
-  flex-wrap: wrap;
-}
+// .tags {
+//   display: flex;
+//   flex-wrap: wrap;
+// }
 
-.tag {
-  background: $color-darkgray;
-  border-radius: 1000rem;
-  padding: .3rem .8rem;
-  color: $color-white;
-  font-weight: 600;
-  margin: 0 .5rem .5rem 0;
+// .tag {
+//   // background: $color-mediumgray;
+//   // border: 1px solid $color-lightgray;
+//   color: $color-mediumgray;
+//   // border-radius: 1000rem;
+//   // padding: .3rem .8rem;
+//   // font-weight: 600;
+//   margin: 0 .5rem .5rem 0;
+//   font-size: .8rem;
+// }
+
+.tags {
   font-size: .9rem;
+  color: $color-mediumgray;
 }

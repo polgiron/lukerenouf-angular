@@ -62,7 +62,7 @@ export class Api {
   }
 
   getLandpageAlbum() {
-    return this.client.getItems('album?filter[title][eq]=landpage&fields=*.*.*.*')
+    return this.client.getItems('album?filter[title][eq]=landpage&fields=*.*.*.*.*')
       .catch(error => console.error(error))
       .then(data => {
         // console.log(data);
@@ -71,15 +71,15 @@ export class Api {
       });
   }
 
-  getAlbums() {
-    return this.client.getItems('album?fields=*.*.*.*')
-      .catch(error => console.error(error))
-      .then(data => {
-        // console.log(data);
-        // console.log(data.data[0]);
-        return data.data;
-      });
-  }
+  // getAlbums() {
+  //   return this.client.getItems('album?fields=*.*.*.*')
+  //     .catch(error => console.error(error))
+  //     .then(data => {
+  //       // console.log(data);
+  //       // console.log(data.data[0]);
+  //       return data.data;
+  //     });
+  // }
 
   getContact() {
     return this.client.getItems('contact')
