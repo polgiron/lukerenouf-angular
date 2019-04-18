@@ -71,15 +71,26 @@ export class Api {
       });
   }
 
-  // getAlbums() {
-  //   return this.client.getItems('album?fields=*.*.*.*')
-  //     .catch(error => console.error(error))
-  //     .then(data => {
-  //       // console.log(data);
-  //       // console.log(data.data[0]);
-  //       return data.data;
-  //     });
-  // }
+  getAlbums() {
+    // return this.client.getItems('album?fields=*.*.*.*')
+    return this.client.getItems('album?fields=*.*.*')
+      .catch(error => console.error(error))
+      .then(data => {
+        // console.log(data);
+        // console.log(data.data[0]);
+        return data.data;
+      });
+  }
+
+  getAlbum(albumId: number) {
+    return this.client.getItems(`album?filter[id][eq]=${albumId}&fields=*.*.*.*.*`)
+      .catch(error => console.error(error))
+      .then(data => {
+        // console.log(data);
+        // console.log(data.data[0]);
+        return data.data[0];
+      });
+  }
 
   getContact() {
     return this.client.getItems('contact')
@@ -95,6 +106,9 @@ export class Api {
     let dimensions = '800/800';
 
     switch (size) {
+      case 'small':
+        dimensions = '300/300';
+        break;
       case 'big':
         dimensions = '1024/1024';
         break;

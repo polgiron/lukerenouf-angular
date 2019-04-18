@@ -8,24 +8,31 @@
   }
 }
 
-.list {
-  column-count: 2;
-  column-gap: 2rem;
-  margin-bottom: 1rem;
+.intro {
+  color: $color-mediumgray;
+  display: flex;
 
-  @include respond-to('small') {
-    column-count: 1;
+  h4 {
     margin-bottom: .5rem;
   }
 
-  li {
-    padding-top: 1rem;
-    padding-bottom: 1rem;
-    break-inside: avoid;
+  section {
+    margin: 1rem 0;
+    padding: 0 .5rem;
+    padding-right: 4rem;
+    width: 50%;
 
-    @include respond-to('small') {
-      padding-top: .5rem;
-      padding-bottom: .5rem;
+    &:first-child {
+      margin-right: 1.5rem;
     }
+  }
+
+  p {
+    max-width: 32rem;
+    // margin: auto;
+    // text-align: center;
+    font-weight: 300;
+    line-height: 1.4;
+    // padding: 1rem;
   }
 }

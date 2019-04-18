@@ -1,0 +1,44 @@
+@import '~src/assets/scss/variables';
+
+.albums {
+  display: grid;
+  grid-gap: 2rem;
+  grid-template-columns: repeat(4, 1fr);
+  margin: 1rem 0;
+
+  li {
+    box-shadow: 1px 1px 10px rgba(0, 0, 0, .1);
+    transition: all .3s $ease-out-quint;
+
+    &:hover {
+      transform: translate3d(.3rem, -.3rem, 0);
+      box-shadow: -2px 2px 15px rgba(0, 0, 0, .15);
+    }
+  }
+}
+
+.cover {
+  padding-bottom: 67%;
+  position: relative;
+
+  img {
+    width: 100%;
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 100%;
+    object-fit: cover;
+  }
+}
+
+.infos {
+  background: $color-white-smoke;
+  padding: .7rem 1rem;
+  color: $color-mediumgray;
+  display: flex;
+  justify-content: space-between;
+
+  .count {
+    color: $color-lightgray;
+  }
+}

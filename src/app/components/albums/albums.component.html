@@ -1,0 +1,15 @@
+<div class="main-container">
+  <ul class="albums">
+    <li *ngFor="let album of albums">
+      <a [routerLink]="['/', album.id]">
+        <div class="cover">
+          <img [src]="album.coverImageSrc" alt="">
+        </div>
+        <div class="infos">
+          <h3>{{album.title}}</h3>
+          <div class="count">{{album.images.length}}</div>
+        </div>
+      </a>
+    </li>
+  </ul>
+</div>

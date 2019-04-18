@@ -8,6 +8,28 @@
   }
 }
 
+.list {
+  column-count: 2;
+  column-gap: 2rem;
+  margin-bottom: 1rem;
+
+  @include respond-to('small') {
+    column-count: 1;
+    margin-bottom: .5rem;
+  }
+
+  li {
+    padding-top: 1rem;
+    padding-bottom: 1rem;
+    break-inside: avoid;
+
+    @include respond-to('small') {
+      padding-top: .5rem;
+      padding-bottom: .5rem;
+    }
+  }
+}
+
 img.fade {
   opacity: 0;
   transition: opacity 2s $ease-out-quint .5s, box-shadow .3s $ease-out-quint;

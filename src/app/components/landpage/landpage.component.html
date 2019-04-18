@@ -2,6 +2,23 @@
   <app-image-thumb *ngIf="cover" [image]="cover" [cover]="true"></app-image-thumb>
 </div>
 
+<div class="intro main-container">
+  <section>
+    <h4>About</h4>
+    <p>
+      Lorem ipsum dolor sit amet consectetur adipisicing elit. Voluptatem nemo ducimus, quaerat nihil esse iure sit reiciendis eaque quae ipsam ut? Officia, perspiciatis. Odit illo dolorum voluptates, molestiae obcaecati velit!
+    </p>
+  </section>
+  <section>
+    <h4>Blabla</h4>
+    <p>
+      Lorem ipsum dolor sit amet consectetur adipisicing elit. Voluptatem nemo ducimus, quaerat nihil esse iure sit reiciendis eaque quae ipsam ut? Officia, perspiciatis. Odit illo dolorum voluptates, molestiae obcaecati velit!
+    </p>
+  </section>
+</div>
+
+<app-albums></app-albums>
+
 <ul class="list main-container" *ngIf="album">
   <li *ngFor="let image of album.images">
     <app-image-thumb [image]="image.image"></app-image-thumb>

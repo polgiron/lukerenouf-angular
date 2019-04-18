@@ -1,0 +1,17 @@
+<div class="album main-container" *ngIf="album">
+  <div class="cover">
+    <!-- <img [src]="album.coverImageSrc" alt=""> -->
+    <app-image [src]="album.coverImageSrc" [width]="album.cover_image.image.width" [height]="album.cover_image.image.height" [albumCover]="true"></app-image>
+  </div>
+  <div class="infos">
+    <h2>{{album.title}}</h2>
+    <p class="description">
+      Lorem ipsum dolor sit amet consectetur, adipisicing elit. Fugiat omnis aut consequatur, alias inventore iure quasi labore numquam corporis impedit velit doloribus laborum placeat non doloremque perferendis obcaecati repellat quos!
+    </p>
+  </div>
+  <ul class="list">
+    <li *ngFor="let image of album.images">
+      <app-image-thumb [image]="image.image"></app-image-thumb>
+    </li>
+  </ul>
+</div>

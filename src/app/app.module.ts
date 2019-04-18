@@ -11,6 +11,8 @@ import { LandpageComponent } from './components/landpage/landpage.component';
 import { ImageThumbComponent } from './components/images/image-thumb/image-thumb.component';
 import { ImageModalComponent } from './components/images/image-modal/image-modal.component';
 import { ImageComponent } from './components/images/image/image.component';
+import { AlbumsComponent } from './components/albums/albums.component';
+import { AlbumComponent } from './components/albums/album/album.component';
 
 @NgModule({
   declarations: [
@@ -21,7 +23,9 @@ import { ImageComponent } from './components/images/image/image.component';
     LandpageComponent,
     ImageThumbComponent,
     ImageModalComponent,
-    ImageComponent
+    ImageComponent,
+    AlbumsComponent,
+    AlbumComponent
   ],
   imports: [
     HttpModule,

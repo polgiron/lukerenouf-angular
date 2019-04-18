@@ -52,7 +52,7 @@
 .title {
   font-size: 2rem;
   font-weight: 500;
-  margin-bottom: $spacing;
+  margin-bottom: 1rem;
   color: $color-mediumgray;
 
   @include respond-to('small') {

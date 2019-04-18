@@ -1,4 +1,4 @@
-<div class="wrapper" #wrapper>
+<div class="wrapper" [ngClass]="{'is-albumcover': albumCover}" #wrapper>
   <div class="loader" *ngIf="!isLoaded" [@fadeOutAnimation]>
     <app-loader></app-loader>
   </div>
