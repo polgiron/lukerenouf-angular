@@ -1,4 +1,4 @@
-<div class="album main-container" *ngIf="album" [@fadeAnimation]>
+<div class="album main-container" [@fadeAnimation]>
   <div class="cover">
     <app-image *ngIf="album.coverImageSrc" [src]="album.coverImageSrc" [width]="album.cover_image.image.width" [height]="album.cover_image.image.height" [albumCover]="true"></app-image>
   </div>
@@ -11,4 +11,8 @@
       <app-image-thumb *ngIf="image.image" [image]="image.image"></app-image-thumb>
     </li>
   </ul>
+</div>
+
+<div class="albums">
+  <app-albums *ngIf="album"></app-albums>
 </div>
