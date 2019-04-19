@@ -3,7 +3,7 @@
     <li *ngFor="let album of albums">
       <a [routerLink]="['/', album.id]">
         <div class="cover">
-          <img [src]="album.coverImageSrc" alt="">
+          <img *ngIf="album.coverImageSrc" [src]="album.coverImageSrc" alt="">
         </div>
         <div class="infos">
           <h3>{{album.title}}</h3>

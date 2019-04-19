@@ -7,20 +7,21 @@ import { Api } from 'src/app/services/api.service';
   styleUrls: ['./landpage.component.scss']
 })
 export class LandpageComponent implements OnInit {
-  album: any;
-  cover: any;
+  landpageAlbum: any;
 
   constructor(
     private api: Api
   ) { }
 
   ngOnInit() {
-    this.api.getLandpageCover().then(cover => {
-      this.cover = cover.landpageimage;
-    });
+    // this.api.getLandpageCover().then(cover => {
+    //   this.cover = cover.landpageimage;
+    // });
 
-    this.api.getLandpageAlbum().then(album => {
-      this.album = album;
+    this.api.getLandpageAlbum().then(landpageAlbum => {
+      this.landpageAlbum = landpageAlbum;
+      console.log(this.landpageAlbum);
+      console.log(landpageAlbum.cover_image.image);
     });
   }
 }

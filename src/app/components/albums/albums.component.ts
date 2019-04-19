@@ -16,10 +16,12 @@ export class AlbumsComponent implements OnInit {
   ngOnInit() {
     this.api.getAlbums().then(albums => {
       this.albums = albums;
-      console.log(albums);
+      // console.log(albums);
 
       this.albums.forEach(album => {
-        album.coverImageSrc = this.api.getThumbnail(album.cover_image.image.filename, 'small');
+        if (album.cover_image) {
+          album.coverImageSrc = this.api.getThumbnail(album.cover_image.image.filename, 'small');
+        }
       });
     });
   }

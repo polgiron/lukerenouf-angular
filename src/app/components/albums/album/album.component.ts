@@ -21,8 +21,10 @@ export class AlbumComponent implements OnInit {
 
       this.api.getAlbum(albumId).then((album: any) => {
         this.album = album;
-        console.log(album);
-        album.coverImageSrc = this.api.getThumbnail(album.cover_image.image.filename);
+        // console.log(album);
+        if (album.cover_image) {
+          album.coverImageSrc = this.api.getThumbnail(album.cover_image.image.filename, 'small');
+        }
       });
     });
   }

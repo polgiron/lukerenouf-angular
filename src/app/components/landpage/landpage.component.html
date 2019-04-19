@@ -1,5 +1,5 @@
-<div class="hero main-container">
-  <app-image-thumb *ngIf="cover" [image]="cover" [cover]="true"></app-image-thumb>
+<div *ngIf="landpageAlbum" class="hero main-container">
+  <app-image-thumb [image]="landpageAlbum.cover_image" [cover]="true"></app-image-thumb>
 </div>
 
 <div class="intro main-container">
@@ -19,17 +19,8 @@
 
 <app-albums></app-albums>
 
-<ul class="list main-container" *ngIf="album">
-  <li *ngFor="let image of album.images">
+<ul class="list main-container" *ngIf="landpageAlbum">
+  <li *ngFor="let image of landpageAlbum.images">
     <app-image-thumb [image]="image.image"></app-image-thumb>
   </li>
 </ul>
-
-<!-- <section class="album main-container" *ngFor="let album of albums">
-  <h2 class="title">{{album.title}}</h2>
-  <ul>
-    <li *ngFor="let image of album.images">
-      <img [src]="image.image.image.data.full_url" alt="">
-    </li>
-  </ul>
-</section> -->

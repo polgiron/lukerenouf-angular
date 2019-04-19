@@ -12,6 +12,10 @@
   color: $color-mediumgray;
   display: flex;
 
+  @include respond-to('small') {
+    display: block;
+  }
+
   h4 {
     margin-bottom: .5rem;
   }
@@ -22,17 +26,22 @@
     padding-right: 4rem;
     width: 50%;
 
+    @include respond-to('small') {
+      width: 100%;
+    }
+
     &:first-child {
       margin-right: 1.5rem;
+
+      @include respond-to('small') {
+        margin: 0;
+      }
     }
   }
 
   p {
     max-width: 32rem;
-    // margin: auto;
-    // text-align: center;
     font-weight: 300;
     line-height: 1.4;
-    // padding: 1rem;
   }
 }
