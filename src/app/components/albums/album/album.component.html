@@ -1,12 +1,10 @@
-<div class="album main-container" *ngIf="album">
+<div class="album main-container" *ngIf="album" [@fadeAnimation]>
   <div class="cover">
     <app-image *ngIf="album.coverImageSrc" [src]="album.coverImageSrc" [width]="album.cover_image.image.width" [height]="album.cover_image.image.height" [albumCover]="true"></app-image>
   </div>
   <div class="infos">
     <h2>{{album.title}}</h2>
-    <p class="description">
-      Lorem ipsum dolor sit amet consectetur, adipisicing elit. Fugiat omnis aut consequatur, alias inventore iure quasi labore numquam corporis impedit velit doloribus laborum placeat non doloremque perferendis obcaecati repellat quos!
-    </p>
+    <p class="description" style="white-space: pre-line">{{album.description || 'No description'}}</p>
   </div>
   <ul class="list">
     <li *ngFor="let image of album.images">

@@ -1,25 +1,21 @@
-<div *ngIf="landpageAlbum" class="hero main-container">
+<div *ngIf="landpageAlbum" class="hero main-container" [@fadeAnimation]>
   <app-image-thumb [image]="landpageAlbum.cover_image" [cover]="true"></app-image-thumb>
 </div>
 
-<div class="intro main-container">
+<div class="intro main-container" *ngIf="text && landpageAlbum" [@fadeAnimation]>
   <section>
-    <h4>About</h4>
-    <p>
-      Lorem ipsum dolor sit amet consectetur adipisicing elit. Voluptatem nemo ducimus, quaerat nihil esse iure sit reiciendis eaque quae ipsam ut? Officia, perspiciatis. Odit illo dolorum voluptates, molestiae obcaecati velit!
-    </p>
+    <h4>{{text.landpage_title_1}}</h4>
+    <p>{{text.landpage_text_1}}</p>
   </section>
   <section>
-    <h4>Blabla</h4>
-    <p>
-      Lorem ipsum dolor sit amet consectetur adipisicing elit. Voluptatem nemo ducimus, quaerat nihil esse iure sit reiciendis eaque quae ipsam ut? Officia, perspiciatis. Odit illo dolorum voluptates, molestiae obcaecati velit!
-    </p>
+    <h4>{{text.landpage_title_2}}</h4>
+    <p>{{text.landpage_text_2}}</p>
   </section>
 </div>
 
-<app-albums></app-albums>
+<app-albums *ngIf="landpageAlbum" [@fadeAnimation]></app-albums>
 
-<ul class="list main-container" *ngIf="landpageAlbum">
+<ul class="list main-container" *ngIf="landpageAlbum" [@fadeAnimation]>
   <li *ngFor="let image of landpageAlbum.images">
     <app-image-thumb [image]="image.image"></app-image-thumb>
   </li>

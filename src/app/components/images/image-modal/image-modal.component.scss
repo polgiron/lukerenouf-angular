@@ -21,7 +21,6 @@
   width: 100%;
   height: 100%;
   background: rgba($color-darkgray, .9);
-  // background: rgba($color-white-smoke, .7);
 }
 
 .dialog {
@@ -30,7 +29,6 @@
   position: relative;
   z-index: 1;
   display: flex;
-  // background: $color-white;
 
   @include respond-to('small') {
     display: block;
@@ -50,7 +48,7 @@
 }
 
 .title {
-  font-size: 2rem;
+  font-size: 1.4rem;
   font-weight: 500;
   margin-bottom: 1rem;
   color: $color-mediumgray;

@@ -7,7 +7,7 @@ import { Api } from 'src/app/services/api.service';
   styleUrls: ['./albums.component.scss']
 })
 export class AlbumsComponent implements OnInit {
-  albums: any;
+  albums: any = [];
 
   constructor(
     private api: Api
@@ -15,12 +15,15 @@ export class AlbumsComponent implements OnInit {
 
   ngOnInit() {
     this.api.getAlbums().then(albums => {
-      this.albums = albums;
+      // this.albums = albums;
       // console.log(albums);
 
-      this.albums.forEach(album => {
-        if (album.cover_image) {
-          album.coverImageSrc = this.api.getThumbnail(album.cover_image.image.filename, 'small');
+      albums.forEach(album => {
+        if (album.title != 'Landpage') {
+          if (album.cover_image) {
+            album.coverImageSrc = this.api.getThumbnail(album.cover_image.image.filename, 'small');
+          }
+          this.albums.push(album);
         }
       });
     });

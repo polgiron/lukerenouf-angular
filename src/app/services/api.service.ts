@@ -52,8 +52,8 @@ export class Api {
     document.body.classList.remove('is-static');
   }
 
-  getLandpageCover() {
-    return this.client.getItems('landpage_cover?fields=*.*.*.*')
+  getText() {
+    return this.client.getItems('text?fields=*')
       .catch(error => console.error(error))
       .then(data => {
         // console.log(data.data[0]);
