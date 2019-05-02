@@ -112,6 +112,9 @@ export class Api {
       case 'big':
         dimensions = '1024/1024';
         break;
+      case 'large':
+        dimensions = '1200/1200';
+        break;
     }
 
     return `${this.domain}/thumbnail/${this.project}/${dimensions}/contain/best/${filename}`;

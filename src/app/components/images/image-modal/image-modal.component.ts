@@ -1,6 +1,6 @@
 import { Component, OnInit, Input, ViewChild, ElementRef } from '@angular/core';
 import { Api } from 'src/app/services/api.service';
-import { takeWhile } from 'rxjs/operators';
+// import { takeWhile } from 'rxjs/operators';
 
 @Component({
   selector: 'app-image-modal',
@@ -40,7 +40,8 @@ export class ImageModalComponent implements OnInit {
       this.tags.push(tag.tag.tag);
     });
 
-    this.imageSrc = this.image.image.data.full_url;
+    // this.imageSrc = this.image.image.data.full_url;
+    this.imageSrc = this.api.getThumbnail(this.image.image.filename, 'large');
     this.setDialogWidth();
 
     this._resizeListener = this.onWindowResize.bind(this);

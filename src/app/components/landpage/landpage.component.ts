@@ -17,10 +17,12 @@ export class LandpageComponent implements OnInit {
   ) { }
 
   ngOnInit() {
+    console.log('GETTING ALL THE IMAGES');
     this.api.getLandpageAlbum().then(landpageAlbum => {
       this.landpageAlbum = landpageAlbum;
+      console.log('GOT ALL THE IMAGES');
       console.log(this.landpageAlbum);
-      console.log(landpageAlbum.cover_image.image);
+      // console.log(landpageAlbum.cover_image.image);
     });
 
     this.api.getText().then(text => {
