@@ -1,14 +1,15 @@
-<div class="album main-container" [@fadeAnimation]>
+<div *ngIf="album" class="album main-container" [@fadeAnimation]>
   <div class="cover">
-    <app-image *ngIf="album.coverImageSrc" [src]="album.coverImageSrc" [width]="album.cover_image.image.width" [height]="album.cover_image.image.height" [albumCover]="true"></app-image>
+    <app-image *ngIf="album.cover" [src]="album.cover.bigUrl" [width]="album.cover.width" [height]="album.cover.height"
+      [albumCover]="true"></app-image>
   </div>
   <div class="infos">
     <h2>{{album.title}}</h2>
-    <p class="description" style="white-space: pre-line">{{album.description || 'No description'}}</p>
+    <p class="description" style="white-space: pre-line" [innerHtml]="album.description"></p>
   </div>
   <ul class="list">
     <li *ngFor="let image of album.images">
-      <app-image-thumb *ngIf="image.image" [image]="image.image"></app-image-thumb>
+      <app-image-thumb *ngIf="image" [image]="image"></app-image-thumb>
     </li>
   </ul>
 </div>

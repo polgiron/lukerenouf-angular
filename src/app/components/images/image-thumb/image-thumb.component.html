@@ -1,11 +1,3 @@
 <button class="image-thumb" [ngClass]="{'is-cover': cover}" (click)="onClick()">
-  <!-- <div class="image-wrapper" #wrapper> -->
-    <app-image [src]="imageSrc" [width]="image.image.width" [height]="image.image.height"></app-image>
-  <!-- </div> -->
-  <!-- <div class="infos">
-    <h3 class="title">{{image.image.title}}</h3>
-    <p class="description">{{image.image.description}}</p>
-  </div> -->
+  <app-image [src]="cover ? image.bigUrl : image.thumbUrl" [width]="image.width" [height]="image.height"></app-image>
 </button>
-
-<!-- <app-image-modal *ngIf="modalIsOpen" [image]="image"></app-image-modal> -->

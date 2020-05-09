@@ -1,48 +1,29 @@
 import { Injectable } from '@angular/core';
-import DirectusSDK from "@directus/sdk-js";
+import DirectusSDK from '@directus/sdk-js';
 import { Observable, Subject } from 'rxjs';
+import { Album, Image } from 'src/app/models/album.model';
 
 @Injectable({
   providedIn: 'root'
 })
 export class Api {
-  private _modalImage: Subject<any> = new Subject<any>();
+  private _modalImage: Subject<Image> = new Subject<Image>();
   client: any;
   domain: string = 'https://api.paulgiron.com';
   project: string = 'lukerenouf';
 
   constructor() {
-    // this.client = new DirectusSDK();
-    // this.client.login({
-    //   url: 'http://api.paulgiron.com',
-    //   project: 'lukerenouf',
-    //   // email: 'pol.giron@gmail.com',
-    //   email: 'luke@gmail.com',
-    //   password: 'pignouf',
-    //   storage: window.localStorage
-    // });
-
     this.client = new DirectusSDK({
       url: this.domain,
       project: this.project
     });
-
-    // client.getItems('image?fields=*.*.*')
-    // client.getItems('album?fields=*.*.*.*.*')
-    // client.getItems('album?filter[title][eq]=landpage')
-    // // client.getItems('album')
-    //   .catch(error => console.error(error))
-    //   .then(data => {
-    //     console.log(data);
-    //     // console.log(data.data[0]);
-    //   });
   }
 
-  public modalImageChannel(): Observable<number> {
+  public modalImageChannel(): Observable<Image> {
     return this._modalImage.asObservable();
   }
 
-  openImageModal(image: any) {
+  openImageModal(image: Image) {
     this._modalImage.next(image);
     document.body.classList.add('is-static');
   }
@@ -52,71 +33,80 @@ export class Api {
     document.body.classList.remove('is-static');
   }
 
-  getText() {
-    return this.client.getItems('text?fields=*')
-      .catch(error => console.error(error))
-      .then(data => {
-        // console.log(data.data[0]);
-        return data.data[0];
-      });
+  async getLandpageAlbum(): Promise<Album> {
+    const response: any = await this.client.getItems('album?filter[title][eq]=landpage&fields=*.*.*.*.*');
+    // console.log(response);
+    return this.parseAlbums(response.data)[0];
   }
 
-  getLandpageAlbum() {
-    return this.client.getItems('album?filter[title][eq]=landpage&fields=*.*.*.*.*')
-      .catch(error => console.error(error))
-      .then(data => {
-        // console.log(data);
-        // console.log(data.data[0]);
-        return data.data[0];
-      });
-  }
-
-  getAlbums() {
-    // return this.client.getItems('album?fields=*.*.*.*')
-    return this.client.getItems('album?fields=*.*.*')
-      .catch(error => console.error(error))
-      .then(data => {
-        // console.log(data);
-        // console.log(data.data[0]);
-        return data.data;
-      });
-  }
-
-  getAlbum(albumId: number) {
-    return this.client.getItems(`album?filter[id][eq]=${albumId}&fields=*.*.*.*.*`)
-      .catch(error => console.error(error))
-      .then(data => {
-        // console.log(data);
-        // console.log(data.data[0]);
-        return data.data[0];
-      });
-  }
-
-  getContact() {
-    return this.client.getItems('contact')
-      .catch(error => console.error(error))
-      .then(data => {
-        // console.log(data);
-        // console.log(data.data[0]);
-        return data.data[0];
-      });
-  }
-
-  getThumbnail(filename: string, size?: string) {
-    let dimensions = '800/800';
-
-    switch (size) {
-      case 'small':
-        dimensions = '300/300';
-        break;
-      case 'big':
-        dimensions = '1024/1024';
-        break;
-      case 'large':
-        dimensions = '1200/1200';
-        break;
+  replaceLineReturn(str: string): string {
+    if (str) {
+      return str.replace('{alinea}', '<span class="alinea"></span>').replace(/(?:\r\n|\r|\n)/g, '<br>');
+    } else {
+      return '';
     }
+  }
 
-    return `${this.domain}/thumbnail/${this.project}/${dimensions}/contain/best/${filename}`;
+  async getAlbums(): Promise<Album[]> {
+    const response: any = await this.client.getItems('album?fields=*.*.*.*');
+    const albums: Album[] = this.parseAlbums(response.data);
+    return albums.filter(album => album.title != 'Landpage');
+  }
+
+  async getAlbum(albumId: number): Promise<Album> {
+    const response: any = await this.client.getItems(`album?filter[id][eq]=${albumId}&fields=*.*.*.*.*`);
+    // console.log(response);
+    return this.parseAlbum(response.data[0]);
+  }
+
+  async getContact() {
+    const response: any = await this.client.getItems('contact');
+    return response.data[0];
+  }
+
+  async getText() {
+    const response: any = await this.client.getItems('text?fields=*');
+    return response.data[0];
+  }
+
+  parseAlbums(data: any): Album[] {
+    return data.map((entry: any) => this.parseAlbum(entry));
+  }
+
+  parseAlbum(data: any): Album {
+    return ({
+      id: data.id,
+      title: data.title,
+      description: this.replaceLineReturn(data.description),
+      images: this.parseImages(data.images),
+      cover: this.parseImage(data.cover_image)
+    });
+  }
+
+  parseImages(data: any): Image[] {
+    return data.map((entry: any) => this.parseImage(entry.image));
+  }
+
+  parseImage(data: any): Image {
+    return ({
+      id: data.id,
+      title: data.title,
+      description: this.replaceLineReturn(data.description),
+      width: data.image.width,
+      height: data.image.height,
+      bigUrl: `${this.domain}/${this.project}/assets/${data.image.private_hash}?key=thumb_big`,
+      thumbUrl: `${this.domain}/${this.project}/assets/${data.image.private_hash}?key=thumb_small`,
+      tags: this.parseTags(data.tags)
+    });
+  }
+
+  parseTags(data: any): string[] {
+    const tags: string[] = [];
+    if (data) {
+      data.forEach((entry: any) => {
+        tags.push(entry.tag.tag);
+      });
+    }
+    return tags;
   }
 }

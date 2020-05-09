@@ -1,6 +1,6 @@
 import { Component, OnInit, Input, ViewChild, ElementRef } from '@angular/core';
 import { Api } from 'src/app/services/api.service';
-// import { takeWhile } from 'rxjs/operators';
+import { Image } from 'src/app/models/album.model';
 
 @Component({
   selector: 'app-image-modal',
@@ -10,40 +10,17 @@ import { Api } from 'src/app/services/api.service';
 export class ImageModalComponent implements OnInit {
   @ViewChild('left') leftElement: ElementRef;
   @ViewChild('right') rightElement: ElementRef;
-  @Input() image: any;
+  @Input() image: Image;
   private _resizeListener: EventListener;
-  // private _alive: boolean = true;
-  // image: any;
-  imageSrc: string;
   padding: number = 32;
   mobileBreakpoint: number = 767;
-  tags: string[] = [];
 
   constructor(
     private api: Api
   ) { }
 
   ngOnInit() {
-    // console.log(this.image.tags);
-
-    // this.api.modalImageChannel()
-    //   .pipe(takeWhile(() => this._alive))
-    //   .subscribe(image => {
-    //     this.image = image;
-    //     if (image) {
-    //       this.imageSrc = this.image.image.data.full_url;
-    //       this.setDialogWidth();
-    //     }
-    //   });
-
-    this.image.tags.forEach(tag => {
-      this.tags.push(tag.tag.tag);
-    });
-
-    // this.imageSrc = this.image.image.data.full_url;
-    this.imageSrc = this.api.getThumbnail(this.image.image.filename, 'large');
     this.setDialogWidth();
-
     this._resizeListener = this.onWindowResize.bind(this);
     window.addEventListener('resize', this._resizeListener);
   }
@@ -57,8 +34,8 @@ export class ImageModalComponent implements OnInit {
       return;
     }
 
-    const oriWidth = this.image.image.width;
-    const oriHeight = this.image.image.height;
+    const oriWidth = this.image.width;
+    const oriHeight = this.image.height;
     const rightWidth = this.rightElement.nativeElement.clientWidth;
     const maxHeight = window.innerHeight - 2 * this.padding;
     const maxWidth = window.innerWidth - 2 * this.padding - rightWidth;
@@ -80,7 +57,6 @@ export class ImageModalComponent implements OnInit {
   }
 
   ngOnDestroy() {
-  //   this._alive = false;
     window.removeEventListener('resize', this._resizeListener);
   }
 }

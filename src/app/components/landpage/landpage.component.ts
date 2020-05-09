@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Api } from 'src/app/services/api.service';
 import { fadeAnimation } from 'src/app/utils/animations';
+import { Album } from 'src/app/models/album.model';
 
 @Component({
   selector: 'app-landpage',
@@ -9,25 +10,15 @@ import { fadeAnimation } from 'src/app/utils/animations';
   animations: [fadeAnimation]
 })
 export class LandpageComponent implements OnInit {
-  landpageAlbum: any;
+  landpageAlbum: Album;
   text: any;
 
   constructor(
     private api: Api
   ) { }
 
-  ngOnInit() {
-    console.log('GETTING ALL THE IMAGES');
-    this.api.getLandpageAlbum().then(landpageAlbum => {
-      this.landpageAlbum = landpageAlbum;
-      console.log('GOT ALL THE IMAGES');
-      console.log(this.landpageAlbum);
-      // console.log(landpageAlbum.cover_image.image);
-    });
-
-    this.api.getText().then(text => {
-      // console.log(text);
-      this.text = text;
-    });
+  async ngOnInit() {
+    this.landpageAlbum = await this.api.getLandpageAlbum();
+    this.text = await this.api.getText();
   }
 }

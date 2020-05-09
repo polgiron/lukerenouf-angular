@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Api } from 'src/app/services/api.service';
 import { takeWhile } from 'rxjs/operators';
+import { Image } from 'src/app/models/album.model';
 
 @Component({
   selector: 'app-home',
@@ -9,7 +10,7 @@ import { takeWhile } from 'rxjs/operators';
 })
 export class HomeComponent implements OnInit {
   private _alive: boolean = true;
-  modalImage: any;
+  modalImage: Image;
   instagram: string;
   email: string;
 
@@ -17,17 +18,16 @@ export class HomeComponent implements OnInit {
     private api: Api
   ) { }
 
-  ngOnInit() {
+  async ngOnInit() {
     this.api.modalImageChannel()
       .pipe(takeWhile(() => this._alive))
-      .subscribe(modalImage => {
+      .subscribe((modalImage: Image) => {
         this.modalImage = modalImage;
       });
 
-    this.api.getContact().then(data => {
-      this.instagram = data.instagram;
-      this.email = data.email;
-    });
+    const contact: any = await this.api.getContact();
+    this.instagram = contact.instagram;
+    this.email = contact.email;
   }
 
   ngOnDestroy() {

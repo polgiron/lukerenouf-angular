@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Params } from '@angular/router';
 import { Api } from 'src/app/services/api.service';
 import { fadeAnimation } from 'src/app/utils/animations';
+import { Album } from 'src/app/models/album.model';
 
 @Component({
   selector: 'app-album',
@@ -10,7 +11,7 @@ import { fadeAnimation } from 'src/app/utils/animations';
   animations: [fadeAnimation]
 })
 export class AlbumComponent implements OnInit {
-  album: any;
+  album: Album;
 
   constructor(
     private route: ActivatedRoute,
@@ -18,16 +19,9 @@ export class AlbumComponent implements OnInit {
   ) { }
 
   ngOnInit() {
-    this.route.params.subscribe((params: Params) => {
+    this.route.params.subscribe(async (params: Params) => {
       const albumId = params['albumId'];
-
-      this.api.getAlbum(albumId).then((album: any) => {
-        this.album = album;
-        // console.log(album);
-        if (album.cover_image) {
-          album.coverImageSrc = this.api.getThumbnail(album.cover_image.image.filename, 'big');
-        }
-      });
+      this.album = await this.api.getAlbum(albumId);
     });
   }
 }

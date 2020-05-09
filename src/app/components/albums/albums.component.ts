@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Api } from 'src/app/services/api.service';
+import { Album } from 'src/app/models/album.model';
 
 @Component({
   selector: 'app-albums',
@@ -7,25 +8,13 @@ import { Api } from 'src/app/services/api.service';
   styleUrls: ['./albums.component.scss']
 })
 export class AlbumsComponent implements OnInit {
-  albums: any = [];
+  albums: Album[] = [];
 
   constructor(
     private api: Api
   ) { }
 
-  ngOnInit() {
-    this.api.getAlbums().then(albums => {
-      // this.albums = albums;
-      // console.log(albums);
-
-      albums.forEach(album => {
-        if (album.title != 'Landpage') {
-          if (album.cover_image) {
-            album.coverImageSrc = this.api.getThumbnail(album.cover_image.image.filename, 'small');
-          }
-          this.albums.push(album);
-        }
-      });
-    });
+  async ngOnInit() {
+    this.albums = await this.api.getAlbums();
   }
 }
