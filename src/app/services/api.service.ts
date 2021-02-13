@@ -15,7 +15,8 @@ export class Api {
   constructor() {
     this.client = new DirectusSDK({
       url: this.domain,
-      project: this.project
+      project: this.project,
+      mode: 'jwt'
     });
   }
 

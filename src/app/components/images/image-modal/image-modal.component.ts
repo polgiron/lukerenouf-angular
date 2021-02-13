@@ -8,8 +8,8 @@ import { Image } from 'src/app/models/album.model';
   styleUrls: ['./image-modal.component.scss']
 })
 export class ImageModalComponent implements OnInit {
-  @ViewChild('left') leftElement: ElementRef;
-  @ViewChild('right') rightElement: ElementRef;
+  @ViewChild('left', { static: true }) leftElement: ElementRef;
+  @ViewChild('right', { static: true }) rightElement: ElementRef;
   @Input() image: Image;
   private _resizeListener: EventListener;
   padding: number = 32;

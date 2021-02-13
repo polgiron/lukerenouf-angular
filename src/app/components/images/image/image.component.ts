@@ -8,7 +8,7 @@ import { fadeOutAnimation } from 'src/app/utils/animations';
   animations: [fadeOutAnimation]
 })
 export class ImageComponent implements OnInit {
-  @ViewChild('wrapper') wrapper: ElementRef;
+  @ViewChild('wrapper', { static: true }) wrapper: ElementRef;
   @Input() src: string;
   @Input() width: number;
   @Input() height: number;
@@ -17,7 +17,7 @@ export class ImageComponent implements OnInit {
 
   constructor() { }
 
-  ngOnInit() {
+  ngOnInit(): void {
     if (!this.albumCover) {
       const ratio = this.height / this.width * 100;
       this.wrapper.nativeElement.style.paddingBottom = ratio + '%';
