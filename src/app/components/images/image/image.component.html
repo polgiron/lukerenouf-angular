@@ -2,5 +2,5 @@
   <div class="loader" *ngIf="!isLoaded" [@fadeOutAnimation]>
     <app-loader></app-loader>
   </div>
-  <img alt="" class="fade" [src]="src" (load)="isLoaded=true" [ngClass]="{'is-loaded': isLoaded}">
+  <img alt="" class="fade" [src]="src" (load)="onLoad()" [ngClass]="{'is-loaded': isLoaded}">
 </div>

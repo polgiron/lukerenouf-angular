@@ -1,5 +1,10 @@
 @import '~src/assets/scss/variables';
 
+.cover {
+  border-radius: .5rem;
+  overflow: hidden;
+}
+
 .infos {
   margin-top: 2rem;
   margin-bottom: 2rem;

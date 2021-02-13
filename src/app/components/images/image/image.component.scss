@@ -2,6 +2,7 @@
 
 .wrapper {
   width: 100%;
+  height: 100%;
   position: relative;
   background: $color-white-smoke;
 
@@ -12,9 +13,13 @@
 
 .loader {
   position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate3d(-50%, -50%, 0);
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
 img {
@@ -25,5 +30,4 @@ img {
   width: 100%;
   height: 100%;
   object-fit: cover;
-  box-shadow: 2px 2px 15px rgba(0, 0, 0, .15);
 }

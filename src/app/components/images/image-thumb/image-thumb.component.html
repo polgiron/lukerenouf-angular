@@ -1,3 +1,4 @@
-<button class="image-thumb" [ngClass]="{'is-cover': cover}" (click)="onClick()">
-  <app-image [src]="cover ? image.bigUrl : image.thumbUrl" [width]="image.width" [height]="image.height"></app-image>
+<button class="image-thumb" [ngClass]="{'is-loaded': isLoaded}" (click)="onClick()">
+  <app-image [landpageCover]="landpageCover" [src]="(cover || landpageCover) ? image.bigUrl : image.thumbUrl"
+    [width]="image.width" [height]="image.height" (hasLoaded)="hasLoaded()"></app-image>
 </button>

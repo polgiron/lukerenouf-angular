@@ -7,11 +7,7 @@
   width: 100vw;
   height: 100vh;
   display: flex;
-  padding: 2rem;
-
-  @include respond-to('small') {
-    padding: 1rem;
-  }
+  padding: 1rem;
 }
 
 .overlay {
@@ -29,6 +25,8 @@
   position: relative;
   z-index: 1;
   display: flex;
+  border-radius: .5rem;
+  overflow: hidden;
 
   @include respond-to('small') {
     display: block;
@@ -38,7 +36,7 @@
 
 .right {
   width: 18rem;
-  padding: 2rem;
+  padding: 1rem 1.5rem;
   background: $color-white;
 
   @include respond-to('small') {
@@ -74,12 +72,10 @@
   width: 1.7rem;
   height: 1.7rem;
   z-index: 2;
+  display: flex;
 
   i {
-    font-size: 2.4em;
     margin: auto;
-    position: relative;
-    top: 2px;
     color: $color-lightgray;
   }
 }

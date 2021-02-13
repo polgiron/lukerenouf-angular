@@ -12,7 +12,7 @@ export class ImageModalComponent implements OnInit {
   @ViewChild('right', { static: true }) rightElement: ElementRef;
   @Input() image: Image;
   private _resizeListener: EventListener;
-  padding: number = 32;
+  padding: number = 16;
   mobileBreakpoint: number = 767;
 
   constructor(

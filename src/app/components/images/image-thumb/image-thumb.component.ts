@@ -10,14 +10,22 @@ import { Image } from 'src/app/models/album.model';
 export class ImageThumbComponent implements OnInit {
   @Input() image: Image;
   @Input() cover: boolean = false;
+  @Input() landpageCover: boolean = false;
+  isLoaded: boolean = false;
 
   constructor(
     private api: Api
   ) { }
 
-  ngOnInit() { }
+  ngOnInit(): void { }
 
-  onClick() {
+  onClick(): void {
     this.api.openImageModal(this.image);
+  }
+
+  hasLoaded(): void {
+    setTimeout(() => {
+      this.isLoaded = true;
+    }, 600);
   }
 }

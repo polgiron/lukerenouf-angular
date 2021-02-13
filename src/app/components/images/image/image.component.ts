@@ -1,4 +1,4 @@
-import { Component, OnInit, Input, ViewChild, ElementRef } from '@angular/core';
+import { Component, OnInit, Input, ViewChild, ElementRef, Output, EventEmitter } from '@angular/core';
 import { fadeOutAnimation } from 'src/app/utils/animations';
 
 @Component({
@@ -13,14 +13,23 @@ export class ImageComponent implements OnInit {
   @Input() width: number;
   @Input() height: number;
   @Input() albumCover: boolean;
+  @Input() landpageCover: boolean;
+  @Output() hasLoaded: EventEmitter<void> = new EventEmitter();
   isLoaded: boolean = false;
+  mobileBreakpoint: number = 767;
 
   constructor() { }
 
   ngOnInit(): void {
-    if (!this.albumCover) {
-      const ratio = this.height / this.width * 100;
-      this.wrapper.nativeElement.style.paddingBottom = ratio + '%';
+    if (this.albumCover || this.landpageCover && window.innerWidth > this.mobileBreakpoint) {
+      return;
     }
+    const ratio = this.height / this.width * 100;
+    this.wrapper.nativeElement.style.paddingBottom = ratio + '%';
+  }
+
+  onLoad(): void {
+    this.isLoaded = true;
+    this.hasLoaded.emit();
   }
 }

@@ -1,7 +1,7 @@
 <div class="main-container">
   <ul class="albums">
     <li *ngFor="let album of albums">
-      <a [routerLink]="['/', album.id]">
+      <a class="album-thumb" [routerLink]="['/', album.id]">
         <div class="cover">
           <img *ngIf="album.cover" [src]="album.cover.thumbUrl" alt="">
         </div>
